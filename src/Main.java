@@ -13,27 +13,16 @@ public class Main {
                     "5. View parking \n" +
                     "6. Exit");
             String command = sc.next();
-            switch (command){
-                case "1":
-                    parking.enterCar();
-                    break;
-                case "2":
-                    parking.exitCar();
-                    break;
-                case "3":
-                    parking.freePlaces();
-                    break;
-                case "4":
-                    parking.fullPlaces();
-                    break;
-                case "5":
-                    parking.viewParking();
-                    break;
-                case "6":
+            switch (command) {
+                case "1" -> parking.enterCar();
+                case "2" -> parking.exitCar();
+                case "3" -> parking.freePlaces();
+                case "4" -> parking.fullPlaces();
+                case "5" -> parking.viewParking();
+                case "6" -> {
                     return;
-                default:
-                    System.out.println("Wrong value is added! Try again!");
-                    break;
+                }
+                default -> System.out.println("Wrong value is added! Try again!");
             }
         }
     }

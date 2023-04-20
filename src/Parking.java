@@ -44,7 +44,25 @@ public class Parking {
         System.out.print("Enter the number of the car: ");
 
         String carType = sc.nextLine();
-        Car car = new Car(carType);
+        String resCar = "";
+        switch (carType){
+            case "1":
+                resCar = " \uD83D\uDE97 ";
+                break;
+            case "2":
+                resCar = " \uD83D\uDE95 ";
+                break;
+            case "3":
+                resCar = " \uD83D\uDE9C ";
+                break;
+            case "4":
+                resCar = " \uD83D\uDE9B ";
+                break;
+            default:
+                System.out.println("Wrong value is choosen. Try again!");
+        }
+
+        Car car = new Car(resCar);
         return car;
     }
 
