@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
+import static java.lang.System.in;
+
 public class Parking {
-    private static Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(in);
 
     private Car[][] spaces;
 

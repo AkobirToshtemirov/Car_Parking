@@ -12,6 +12,7 @@ public class Main {
                     "4. Full places count \n" +
                     "5. View parking \n" +
                     "6. Exit");
+            System.out.print("Choose one of the options above: ");
             String command = sc.next();
             switch (command) {
                 case "1" -> parking.enterCar();
@@ -20,6 +21,7 @@ public class Main {
                 case "4" -> parking.fullPlaces();
                 case "5" -> parking.viewParking();
                 case "6" -> {
+                    System.out.println("OK, parking is done!");
                     return;
                 }
                 default -> System.out.println("Wrong value is added! Try again!");
