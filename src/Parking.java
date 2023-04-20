@@ -45,21 +45,12 @@ public class Parking {
 
         String carType = sc.nextLine();
         String resCar = "";
-        switch (carType){
-            case "1":
-                resCar = " \uD83D\uDE97 ";
-                break;
-            case "2":
-                resCar = " \uD83D\uDE95 ";
-                break;
-            case "3":
-                resCar = " \uD83D\uDE9C ";
-                break;
-            case "4":
-                resCar = " \uD83D\uDE9B ";
-                break;
-            default:
-                System.out.println("Wrong value is choosen. Try again!");
+        switch (carType) {
+            case "1" -> resCar = " \uD83D\uDE97 ";
+            case "2" -> resCar = " \uD83D\uDE95 ";
+            case "3" -> resCar = " \uD83D\uDE9C ";
+            case "4" -> resCar = " \uD83D\uDE9B ";
+            default -> System.out.println("Wrong value is choosen. Try again!");
         }
 
         Car car = new Car(resCar);
