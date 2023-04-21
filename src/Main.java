@@ -2,8 +2,16 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Parking parking = new Parking(2, 5);
+        System.out.println("Welcome to the Parking the Car App!");
+        System.out.print("Enter the numbers of rows of the parking area: ");
+
         Scanner sc = new Scanner(System.in);
+        int row = sc.nextInt();
+
+        System.out.print("Enter the numbers of columns of the parking area: ");
+        int col = sc.nextInt();
+
+        Parking parking = new Parking(row, col);
 
         while(true){
             System.out.println("1. Enter car \n" +
@@ -18,7 +26,7 @@ public class Main {
                 case "1" -> parking.enterCar();
                 case "2" -> parking.exitCar();
                 case "3" -> parking.freePlaces();
-                case "4" -> parking.fullPlaces();
+                case "4" -> parking.fullPlaces(parking);
                 case "5" -> parking.viewParking();
                 case "6" -> {
                     System.out.println("OK, parking is done!");
