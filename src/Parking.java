@@ -3,9 +3,9 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class Parking {
-    private static Scanner sc = new Scanner(in);
+    private static final Scanner sc = new Scanner(in);
 
-    private Car[][] spaces;
+    private final Car[][] spaces;
 
     public Parking(int row, int col) {
         spaces = new Car[row][col];
@@ -18,7 +18,7 @@ public class Parking {
 
     private void enterCar(Car car){
         while(true) {
-            viewParking();
+            viewParking(spaces);
             System.out.print("Enter row number: ");
             int row = Integer.parseInt(sc.nextLine());
             System.out.print("Enter col number: ");
@@ -26,6 +26,7 @@ public class Parking {
 
             if(spaces[row][col] == null){
                 spaces[row][col] = car;
+                viewParking(spaces);
                 return;
             } else{
                 System.out.println("This place is already taken by somebody. Please choose another space!");
@@ -33,7 +34,21 @@ public class Parking {
         }
     }
 
-    public void exitCar(){}
+    public void exitCar(){
+        System.out.print("Enter the row number: ");
+        int row = sc.nextInt();
+
+        System.out.print("Enter the column number: ");
+        int col = sc.nextInt();
+
+        if(spaces[row][col] != null) {
+            spaces[row][col] = null;
+            viewParking(spaces);
+            System.out.println("Car is exited from parking area!");
+        } else
+            System.out.println("There is no car in this parking space.");
+
+    }
     public void freePlaces(){
         int count = 0;
         for(Car[] space : spaces)
@@ -41,11 +56,11 @@ public class Parking {
                 if(car == null)
                     count++;
 
-        viewParking();
+        viewParking(spaces);
         System.out.println("Free places available: " + count);
     }
     public void fullPlaces(Parking parking){
-        viewParking();
+        viewParking(spaces);
         System.out.println("Full Spaces in the parking area: " + parking.spaces.length * parking.spaces[0].length);
     }
 
@@ -72,14 +87,13 @@ public class Parking {
             case "6" -> resCar = " \uD83C\uDFCD ";
             case "7" -> resCar = " \uD83D\uDEFA ";
             case "8" -> resCar = " \uD83C\uDFCE ";
-            default -> System.out.println("Wrong value is choosen. Try again!");
+            default -> System.out.println("Wrong value is chosen. Try again!");
         }
 
-        Car car = new Car(resCar);
-        return car;
+        return new Car(resCar);
     }
 
-    public void viewParking() {
+    public void viewParking(Car[][] spaces) {
         for(Car[] space : spaces) {
             for(Car car : space){
                 if(car == null)
